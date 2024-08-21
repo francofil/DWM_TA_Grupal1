@@ -5,7 +5,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
+}
+
+.section{
+    min-width: 100%;
+    min-height: 100%;
 }
 
 h1 {
@@ -19,105 +23,76 @@ h1 {
 
 /* Estilo para las columnas con scroll */
 .column {
-    height: 500px;
+    max-height: 500px;
     overflow-y: auto;
-}
-
-/* Estilo para el botón flotante */
-.floating-button {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
 }
 
 
 
 .box {
-    background-color: #1e1e1e; /* Color más claro que el fondo */
-    border: 2px solid rgb(52, 154, 52); /* Borde verde */
+    background-color: #1e1e1e;
+    /* Color más claro que el fondo */
+    border: 2px solid rgb(52, 154, 52);
+    /* Borde verde */
     padding: 20px;
     text-align: center;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrar el texto horizontalmente */
-    align-items: center; /* Centrar el texto verticalmente */
+    justify-content: center;
+    /* Centrar el texto horizontalmente */
+    align-items: center;
+    /* Centrar el texto verticalmente */
 }
 
 .task {
     padding: 10px;
     text-align: left;
-    background-color: #333333; /* Color de fondo ligeramente más claro */
+    background-color: #333333;
+    /* Color de fondo ligeramente más claro */
     border-radius: 8px;
-    width: 100%; 
+    width: 100%;
     margin-bottom: 20px;
-    color: #ffffff; /* Asegúrate de que el texto sea visible */
+    color: #ffffff;
+    /* Asegúrate de que el texto sea visible */
 }
 
 
 #add-task-btn {
     position: fixed;
-    bottom: 20px; /* Ajusta según tu necesidad */
-    right: 20px;  /* Ajusta según tu necesidad */
-    width: 60px;  /* Tamaño del botón */
-    height: 60px; /* Tamaño del botón */
-    border-radius: 50%; /* Hace el botón circular */
-    background-color: rgb(52, 154, 52); /* Color de fondo verde */
-    color: black; /* Color del texto negro */
-    font-size: 30px; /* Tamaño del símbolo + */
-    border: none; /* Sin borde */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra opcional para efecto de profundidad */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    outline: none; /* Elimina el borde azul en navegadores como Firefox */
-  }
-  
-  #add-task-btn:hover {
-    background-color: darkgreen; /* Color más oscuro al pasar el ratón */
-  }
-  
-.button.is-success{
-   background-color: rgb(52, 154, 52)
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #99e9f2;
+    color: black;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    /* Cambia el cursor al pasar sobre el botón */
+    outline: none;
+    /* Elimina el borde azul en navegadores como Firefox */
+}
 
+#add-task-btn:hover {
+    background-color: #7bbcc4;
+    /* Color más oscuro al pasar el ratón */
 }
 
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
 
+#btn-desktop{
+    display: none;
+}
+
 /* Estilo para pantallas grandes: scroll horizontal */
 @media (min-width: 1440px) {
-    .columns-container {
-        display: flex;
-        overflow-x: auto;
-        /* Habilitar scroll horizontal */
-    }
-
-    .columns {
-        flex-wrap: nowrap;
-        /* Prevenir el wrapping de columnas */
-    }
 }
 
 /* Estilo para pantallas medianas: wrap de columnas */
 @media (max-width: 768px) {
-    .columns {
-        flex-wrap: wrap;
-        /* Habilitar wrapping de columnas */
-    }
-
-    .column {
-        flex-basis: 100%;
-        /* Cada columna toma el ancho completo */
-    }
-}
     
+}
