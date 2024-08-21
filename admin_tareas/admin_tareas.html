@@ -14,49 +14,60 @@
 </head>
 
 <body>
-    <h1>Gestor de Tareas</h1>
-    <section class="section">
+    <section class="section relative-container">
         <div class="container">
-            <div class="columns">
-                <div class="column is-one-fifth">
-                    <div class="box">
-                        <h2 class="subtitle">Backlog</h2>
-                        
+            <h1 class="title has-text-centered">Gestor de Tareas</h1>
+            <button id="btn-desktop" class="button is-rounded">Agregar Tarea</button>
+            <div class="columns-container">
+                <div class="columns">
+                    <!-- Columna 1: Backlog -->
+                    <div class="column">
+                        <div class="box">
+                            <h2 class="subtitle">Backlog</h2>
+                            <!-- Aquí puedes añadir las tareas -->
+                        </div>
                     </div>
-                </div>
 
-              
-                <div class="column is-one-fifth">
-                    <div class="box">
-                        <h2 class="subtitle">To Do</h2>
-                       
+                    <!-- Columna 2: To Do -->
+                    <div class="column">
+                        <div class="box">
+                            <h2 class="subtitle">To Do</h2>
+                            <!-- Aquí puedes añadir las tareas -->
+                        </div>
                     </div>
-                </div>
 
-           
-                <div class="column is-one-fifth">
-                    <div class="box">
-                        <h2 class="subtitle">In Progress</h2>
-                    
+                    <!-- Columna 3: In Progress -->
+                    <div class="column">
+                        <div class="box">
+                            <h2 class="subtitle">In Progress</h2>
+                            <!-- Aquí puedes añadir las tareas -->
+                        </div>
                     </div>
-                </div>
 
-               
-                <div class="column is-one-fifth">
-                    <div class="box">
-                        <h2 class="subtitle">Blocked</h2>
-                  
+                    <!-- Columna 4: Blocked -->
+                    <div class="column">
+                        <div class="box">
+                            <h2 class="subtitle">Blocked</h2>
+                            <!-- Aquí puedes añadir las tareas -->
+                        </div>
                     </div>
-                </div>
 
-              
-                <div class="column is-one-fifth">
-                    <div class="box">
-                        <h2 class="subtitle">Done</h2>
-                       
+                    <!-- Columna 5: Done -->
+                    <div class="column">
+                        <div class="box">
+                            <h2 class="subtitle">Done</h2>
+                            <!-- Aquí puedes añadir las tareas -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Botón flotante -->
+        <button id="btn-mobile" class="button is-primary is-rounded floating-button">
+            +
+        </button>
     </section>
 </body>
+
+</html>
