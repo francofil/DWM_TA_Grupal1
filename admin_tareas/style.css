@@ -1,42 +1,73 @@
 h1 {
     background-color: #121212;
-    color: #28a745;
-    font-family: 'Matemasie', serif;
+    color: rgb(52, 154, 52);
+    font-family: "Moderustic", san-erif;
     font-size: 36px;
     font-weight: bold;
     text-align: center;
-    margin: 20px 0;
+    margin: 0;
 }
 
 body {
     background-color: #121212;
-    /* Un color oscuro */
     color: #ffffff;
     font-family: Arial, sans-serif;
-    /* Fuente opcional */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    height: 100vh;
 }
-
-.container{
-    display: flex;
-    justify-content: space-between; 
-    gap: 10px; 
-    width: 100%; /* Ocupa todo el ancho de la página */
-}
-
 
 .box {
-    background-color: #1e1e1e; /* Color ligeramente más claro que el fondo */
-    border: 2px solid #333333; /* Borde oscuro */
+    background-color: #1e1e1e; /* Color más claro que el fondo */
+    border: 2px solid rgb(52, 154, 52); /* Borde verde */
     padding: 20px;
     text-align: center;
     border-radius: 8px;
-    flex: 1; /* Hacer que todas las columnas tengan el mismo ancho y ocupen todo el espacio disponible */
     display: flex;
+    flex-direction: column;
     justify-content: center; /* Centrar el texto horizontalmente */
     align-items: center; /* Centrar el texto verticalmente */
 }
 
+.task{
+    padding: 10px;
+    text-align: left;
+    background-color: #000000;
+    border-radius: 8px;
+    width: 100%; 
+    margin-bottom: 20px;
+}
+
+#add-task-btn {
+    position: fixed;
+    bottom: 20px; /* Ajusta según tu necesidad */
+    right: 20px;  /* Ajusta según tu necesidad */
+    width: 60px;  /* Tamaño del botón */
+    height: 60px; /* Tamaño del botón */
+    border-radius: 50%; /* Hace el botón circular */
+    background-color: rgb(52, 154, 52); /* Color de fondo verde */
+    color: black; /* Color del texto negro */
+    font-size: 30px; /* Tamaño del símbolo + */
+    border: none; /* Sin borde */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra opcional para efecto de profundidad */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    outline: none; /* Elimina el borde azul en navegadores como Firefox */
+  }
+  
+  #add-task-btn:hover {
+    background-color: darkgreen; /* Color más oscuro al pasar el ratón */
+  }
+  
+.button.is-success{
+   background-color: rgb(52, 154, 52)
+
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
 
