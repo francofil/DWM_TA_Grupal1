@@ -18,18 +18,9 @@ h1 {
 }
 
 /* Estilo para las columnas con scroll */
-.column .box {
+.column {
     height: 500px;
-    /* Altura fija para las columnas */
     overflow-y: auto;
-    /* Scroll vertical si hay mucho contenido */
-}
-
-/* Contenedor principal relativo para el botón flotante */
-.relative-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
 }
 
 /* Estilo para el botón flotante */
@@ -46,34 +37,7 @@ h1 {
     z-index: 1000;
 }
 
-/* Estilo para pantallas grandes: scroll horizontal */
-@media (min-width: 1440px) {
-    .columns-container {
-        display: flex;
-        overflow-x: auto;
-        /* Habilitar scroll horizontal */
-    }
 
-    .columns {
-        flex-wrap: nowrap;
-        /* Prevenir el wrapping de columnas */
-        min-width: 300%;
-        /* Asegurar que las columnas ocupen más que el ancho de la pantalla */
-    }
-}
-
-/* Estilo para pantallas medianas: wrap de columnas */
-@media (max-width: 768px) {
-    .columns {
-        flex-wrap: wrap;
-        /* Habilitar wrapping de columnas */
-    }
-
-    .column {
-        flex-basis: 100%;
-        /* Cada columna toma el ancho completo */
-    }
-}
 
 .box {
     background-color: #1e1e1e; /* Color más claro que el fondo */
@@ -87,14 +51,16 @@ h1 {
     align-items: center; /* Centrar el texto verticalmente */
 }
 
-.task{
+.task {
     padding: 10px;
     text-align: left;
-    background-color: #000000;
+    background-color: #333333; /* Color de fondo ligeramente más claro */
     border-radius: 8px;
     width: 100%; 
     margin-bottom: 20px;
+    color: #ffffff; /* Asegúrate de que el texto sea visible */
 }
+
 
 #add-task-btn {
     position: fixed;
@@ -128,5 +94,30 @@ h1 {
     filter: invert(1);
 }
 
+/* Estilo para pantallas grandes: scroll horizontal */
+@media (min-width: 1440px) {
+    .columns-container {
+        display: flex;
+        overflow-x: auto;
+        /* Habilitar scroll horizontal */
+    }
 
+    .columns {
+        flex-wrap: nowrap;
+        /* Prevenir el wrapping de columnas */
+    }
+}
+
+/* Estilo para pantallas medianas: wrap de columnas */
+@media (max-width: 768px) {
+    .columns {
+        flex-wrap: wrap;
+        /* Habilitar wrapping de columnas */
+    }
+
+    .column {
+        flex-basis: 100%;
+        /* Cada columna toma el ancho completo */
+    }
+}
     

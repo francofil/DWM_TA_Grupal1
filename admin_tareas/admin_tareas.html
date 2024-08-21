@@ -11,25 +11,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
-    <section class="section relative-container">
+    <section class="section">
         <div class="container">
-            <h1 class="title has-text-centered">Gestor de Tareas</h1>
-            <button id="btn-desktop" class="button is-rounded">Agregar Tarea</button>
+
+            <h1 class="title has-text-centered">
+                Gestor de Tareas
+            </h1>
+
+            <button id="btn-desktop" class="button is-rounded">
+                Agregar Tarea
+            </button>
+
             <div class="columns-container">
-                <div class="columns">
-                    <!-- Columna 1: Backlog -->
-                    <div class="column">
-                        <div class="box">
-                            <h2 class="subtitle">Backlog</h2>
-                            <!-- Aquí puedes añadir las tareas -->
-                        </div>
-            <div class="columns">
                 <div class="column is-one-fifth">
                     <div class="box">
                         <h2 class="subtitle">Backlog</h2>
+
                         <div class="task">
                             <div class="task-title">Tarea 1</div>
                             <p class="task-description">Descripción de la tarea 1.</p>
@@ -42,8 +43,10 @@
                             <div class="task-title">Tarea 3</div>
                             <p class="task-description">Descripción de la tarea 3.</p>
                         </div>
+
                     </div>
                 </div>
+
                 <div class="column is-one-fifth">
                     <div class="box">
                         <h2 class="subtitle">To Do</h2>
@@ -65,14 +68,11 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Botón flotante -->
-        <button id="btn-mobile" class="button is-primary is-rounded floating-button">
-            +
-        </button>
+
+        </div>
     </section>
- 
+
     <!-- Botón para agregar una nueva tarea -->
     <button id="add-task-btn" class="button is-success is-fullwidth">+</button>
 
@@ -151,8 +151,6 @@
             </footer>
         </div>
     </div>
-
-    <script src="script.js"></script>
 
 
 </body>
