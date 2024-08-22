@@ -1,7 +1,21 @@
+/*Declaración de Variables*/
+:root{
+    --background-color: #121212;
+    --font-color: white;
+    --primary-color: rgb(52, 154, 52);
+    --light-background: #1e1e1e;
+    --very-light-background: #333333;
+    --create-task-button: #99e9f2;
+    --create-task-hover: #7bbcc4;
+}
+
+*{
+    color: var(--font-color);
+}
+
 body {
     box-sizing: border-box;
-    background-color: #121212;
-    color: #ffffff;
+    background-color: var(--background-color);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -13,12 +27,15 @@ body {
 }
 
 h1 {
-    color: rgb(52, 154, 52);
-    font-family: "Moderustic", san-erif;
+    font-family: "Moderustic", sans-serif;
     font-size: 36px;
     font-weight: bold;
     text-align: center;
     margin: 0;
+}
+
+.title, .subtitle{
+    color: var(--font-color);
 }
 
 /* Estilo para las columnas con scroll */
@@ -30,9 +47,9 @@ h1 {
 
 
 .box {
-    background-color: #1e1e1e;
+    background-color: var(--light-background);
     /* Color más claro que el fondo */
-    border: 2px solid rgb(52, 154, 52);
+    border: 2px solid var(--primary-color);
     /* Borde verde */
     padding: 20px;
     text-align: center;
@@ -48,13 +65,12 @@ h1 {
 .task {
     padding: 10px;
     text-align: left;
-    background-color: #333333;
+    background-color: var(--very-light-background);
     /* Color de fondo ligeramente más claro */
     border-radius: 8px;
     width: 100%;
     margin-bottom: 20px;
-    color: #ffffff;
-    /* Asegúrate de que el texto sea visible */
+
 }
 
 
@@ -65,7 +81,7 @@ h1 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #99e9f2;
+    background-color: var(--create-task-button);
     color: black;
     font-size: 30px;
     border: none;
@@ -76,7 +92,7 @@ h1 {
 }
 
 #add-task-btn:hover {
-    background-color: #7bbcc4;
+    background-color: var(--create-task-hover);
     /* Color más oscuro al pasar el ratón */
 }
 
