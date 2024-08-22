@@ -1,4 +1,5 @@
 const addTaskBtn = document.getElementById('add-task-btn');
+const addTaskDesktop = document.getElementById('btn-desktop');
 const taskModal = document.getElementById('task-modal');
 const closeModalBtns = taskModal.querySelectorAll('.delete, #cancel-task-btn');
 const saveTaskBtn = document.getElementById('save-task-btn');
@@ -9,6 +10,12 @@ let mode = "Light";
 
 // Abrir modal de nueva tarea
 addTaskBtn.addEventListener('click', () => {
+    editingTask = null;
+    taskForm.reset();
+    taskModal.classList.add('is-active');
+});
+
+addTaskDesktop.addEventListener('click', () => {
     editingTask = null;
     taskForm.reset();
     taskModal.classList.add('is-active');
@@ -103,8 +110,8 @@ function changeMode(btnOrigin){
         document.documentElement.style.setProperty("--background-color", "#121212");
         document.documentElement.style.setProperty("--font-color", "white");
         document.documentElement.style.setProperty("--primary-color", "rgb(52, 154, 52)");
-        document.documentElement.style.setProperty("--light-background-color", "#1e1e1e");
-        document.documentElement.style.setProperty("--very-light-background-color", "#333333");
+        document.documentElement.style.setProperty("--light-background", "#1e1e1e");
+        document.documentElement.style.setProperty("--very-light-background", "#333333");
         document.documentElement.style.setProperty("--create-task-button", "#99e9f2");
         document.documentElement.style.setProperty("--create-task-", "#7bbcc4");
 
@@ -113,11 +120,11 @@ function changeMode(btnOrigin){
     }
     else{
 
-        document.documentElement.style.setProperty("--background-color", "#eeeeee");
+        document.documentElement.style.setProperty("--background-color", "#e8e8e8");
         document.documentElement.style.setProperty("--font-color", "black");
-        document.documentElement.style.setProperty("--primary-color", "rgb(52, 154, 52)");
-        document.documentElement.style.setProperty("--light-background-color", "#cccccc");
-        document.documentElement.style.setProperty("--very-light-background-color", "#999999");
+        document.documentElement.style.setProperty("--primary-color", "rgb(52, 52, 154)");
+        document.documentElement.style.setProperty("--light-background", "#efefef");
+        document.documentElement.style.setProperty("--very-light-background", "#f8f8f8");
         document.documentElement.style.setProperty("--create-task-button", "#99e9f2");
         document.documentElement.style.setProperty("--create-task-hover", "#7bbcc4");
 

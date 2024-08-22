@@ -19,6 +19,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    min-width: 100vw;
 }
 
 .section{
@@ -51,7 +53,7 @@ h1 {
     /* Color más claro que el fondo */
     border: 2px solid var(--primary-color);
     /* Borde verde */
-    padding: 20px;
+    
     text-align: center;
     border-radius: 8px;
     display: flex;
@@ -104,11 +106,73 @@ h1 {
     display: none;
 }
 
-/* Estilo para pantallas grandes: scroll horizontal */
-@media (min-width: 1440px) {
+/* Estilo para pantallas medianas: wrap de columnas */
+@media (min-width: 768px) {
+    #add-task-btn{
+        display: none;
+    }
+
+    #btn-desktop{
+        display: block;
+        background-color: var(--create-task-button);
+    }
+
+    #btn-desktop:hover{
+        display: block;
+        background-color: var(--create-task-hover);
+    }
+
+    .columns-container {
+        display: flex;
+        flex-wrap: wrap; /* Permite que las columnas se muevan a la siguiente fila si es necesario */
+        justify-content: center; /* Centra las columnas en la fila */
+    }
+
+    .column {
+        flex: 1 0 calc(33.333% - 20px); /* Cada columna ocupa un tercio del ancho de la fila */
+    
+        min-width: 300px; /* Evita que las columnas sean demasiado pequeñas */
+    }
 }
 
-/* Estilo para pantallas medianas: wrap de columnas */
-@media (max-width: 768px) {
+
+@media (min-width: 1440px) {
+    @media (min-width: 1440px) {
+
+        .container{
+            min-width: 90vw;
+            min-height: 100%;
+            margin: 5vw;
+        }
+
+        .columns-container {
+            display: flex;
+            flex-wrap: nowrap; /* No permite que las columnas se muevan a la siguiente fila */
+            overflow-x: auto; /* Activa el scroll horizontal */
+            scroll-snap-type: x mandatory; /* Hace que el scroll "encaje" en las columnas */
+            width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
+            padding-bottom: 20px; /* Asegura que el contenido tenga espacio suficiente abajo */
+            margin: 0; /* Elimina márgenes que puedan causar desplazamiento */
+        }
+    
+        .column {
+            min-width: calc(100% / 3); /* Asegura que cada columna ocupe un tercio del ancho de la pantalla */
+            scroll-snap-align: end; /* Hace que las columnas "encajen" al hacer scroll */
+            margin: 0; /* Elimina márgenes que puedan afectar el scroll */
+            box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
+        }
+        
+        body{
+            min-height: 100vh;
+            background-color: var(--background-color);
+        }
+    
+        /* Asegúrate de que el contenedor ocupe todo el alto y tenga fondo */
+        .section {
+            background-color: var(--background-color);
+            padding: 0;
+            min-height: 100%;
+        }
+    }
     
 }
