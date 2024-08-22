@@ -11,16 +11,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
-    <h1>Gestor de Tareas</h1>
+
+    <!-- Botón de Modo Oscuro/Modo Claro -->
+     <button type="button" id="modo-oscuro"></button>
+
     <section class="section">
         <div class="container">
-            <div class="columns">
-                <div class="column is-one-fifth">
+
+            <h1 class="title has-text-centered">
+                Gestor de Tareas
+            </h1>
+
+            <button id="btn-desktop" class="button is-rounded">
+                Agregar Tarea
+            </button>
+
+            <div class="columns-container">
+                <div class="column">
                     <div class="box">
                         <h2 class="subtitle">Backlog</h2>
+
                         <div class="task">
                             <div class="task-title">Tarea 1</div>
                             <p class="task-description">Descripción de la tarea 1.</p>
@@ -33,32 +47,36 @@
                             <div class="task-title">Tarea 3</div>
                             <p class="task-description">Descripción de la tarea 3.</p>
                         </div>
+
                     </div>
                 </div>
-                <div class="column is-one-fifth">
+
+                <div class="column">
                     <div class="box">
                         <h2 class="subtitle">To Do</h2>
                     </div>
                 </div>
-                <div class="column is-one-fifth">
+                <div class="column">
                     <div class="box">
                         <h2 class="subtitle">In Progress</h2>
                     </div>
                 </div>
-                <div class="column is-one-fifth">
+                <div class="column">
                     <div class="box">
                         <h2 class="subtitle">Blocked</h2>
                     </div>
                 </div>
-                <div class="column is-one-fifth">
+                <div class="column">
                     <div class="box">
                         <h2 class="subtitle">Done</h2>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </section>
- 
+
     <!-- Botón para agregar una nueva tarea -->
     <button id="add-task-btn" class="button is-success is-fullwidth">+</button>
 
@@ -138,7 +156,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
-
 
 </body>
+
+</html>
