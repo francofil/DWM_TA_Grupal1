@@ -5,28 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Tareas</title>
+    <title>Gestor de Tareas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet">
     <script defer src="script.js"></script>
+    <link id="icono" rel="icon" href="white-task.png" type="image/x-icon">
 </head>
 
 <body>
     <section class="section">
         <div class="container">
-            <div>
-                <!-- Botón de Modo Oscuro/Modo Claro -->
-                <button type="button" id="modo-oscuro"></button>
-                <h1 class="title has-text-centered">
-                    Gestor de Tareas
-                </h1>
 
-
-
-            </div>
+            <h1 class="title has-text-centered">
+                Gestor de Tareas
+            </h1>
 
             <button id="btn-desktop" class="button is-rounded">
                 Agregar Tarea
@@ -40,22 +35,22 @@
                 </div>
 
                 <div class="column">
-                    <div class="box">
+                    <div class="box" ondragover="allowdrop()" ondrop="drop()">
                         <h2 class="subtitle">To Do</h2>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="box">
+                    <div class="box" ondragover="allowdrop()" ondrop="drop()">
                         <h2 class="subtitle">In Progress</h2>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="box">
+                    <div class="box" ondragover="allowdrop()" ondrop="drop()">
                         <h2 class="subtitle">Blocked</h2>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="box">
+                    <div class="box" ondragover="allowdrop()" ondrop="drop()">
                         <h2 class="subtitle">Done</h2>
                     </div>
                 </div>
