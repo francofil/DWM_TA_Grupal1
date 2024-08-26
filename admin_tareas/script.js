@@ -35,9 +35,11 @@ function renderTasks() {
     // Asegúrate de no añadir múltiples veces los mismos event listeners
     document.querySelectorAll('.column .box').forEach(box => {
         box.removeEventListener('dragover', handleDragOver);
+        box.removeEventListener('dragleave', handleDragLeave);
         box.removeEventListener('drop', handleDrop);
 
         box.addEventListener('dragover', handleDragOver);
+        box.addEventListener('dragleave', handleDragLeave);
         box.addEventListener('drop', handleDrop);
     });
 }
@@ -48,9 +50,14 @@ function handleDragOver(e) {
     e.currentTarget.classList.add('drag-over'); // Agregar clase para retroalimentación visual
 }
 
+function handleDragLeave(e) {
+    e.preventDefault();
+    e.currentTarget.classList.remove('drag-over'); // Quitar la retroalimentación visual cuando se sale de la columna
+}
+
 function handleDrop(e) {
     e.preventDefault();
-    e.currentTarget.classList.remove('drag-over'); // Quitar la retroalimentación visual cuando se suelta
+    e.currentTarget.classList.remove('drag-over'); // Quitar la retroalimentación visual cuando se suelta la tarea
     const id = e.dataTransfer.getData('text/plain');
     const task = tasks.find(task => task.id == id);
 
@@ -147,73 +154,11 @@ saveTaskBtn.addEventListener('click', () => {
         // Crear nueva tarea
         tasks.push(taskData);
     }
-    renderTasks();
+
     taskModal.classList.remove('is-active');
+    renderTasks();
 });
 
-// Agregamos un event listener para el botón de modo oscuro
-document.getElementById("modo-oscuro").addEventListener("click", function () {
-    // Alterna entre las clases 'light-mode' y 'dark-mode' (por defecto sin la clase es modo oscuro)
-    document.body.classList.toggle("light-mode");
-
-    if (document.body.classList.contains("light-mode")) {
-        this.classList.add("light-mode");  // Cambia la imagen del botón para modo claro
-    } else {
-        this.classList.remove("light-mode");  // Cambia la imagen del botón para modo oscuro
-    }
-});
-
-
-// Crear nueva tarea
-function createTask(taskData) {
-    const taskCard = generateTaskCard(taskData);
-
-    // Seleccionar la columna correcta según el estado de la tarea
-    const targetColumn = document.querySelector(`.column .box h2.subtitle`).closest('.columns-container').querySelectorAll('.box');
-    for (let box of targetColumn) {
-        if (box.querySelector('h2.subtitle').textContent === taskData.status) {
-            box.appendChild(taskCard);
-            break;
-        }
-    }
-}
-
-
-// Editar tarea existente
-function updateTask(taskCard, taskData) {
-    taskCard.querySelector('.task-title').textContent = taskData.title;
-    taskCard.querySelector('.task-assigned').textContent = `Asignado a: ${taskData.assigned}`;
-    taskCard.querySelector('.task-priority').textContent = `Prioridad: ${taskData.priority}`;
-    taskCard.querySelector('.task-due-date').textContent = `Fecha límite: ${taskData.dueDate}`;
-
-    // Mover la tarea a la columna correspondiente si se cambia el estado
-    const currentColumn = taskCard.closest('.column').querySelector('.subtitle').textContent;
-    if (currentColumn !== taskData.status) {
-        const targetColumn = document.querySelector(`.column .box h2.subtitle:contains('${taskData.status}')`).closest('.column').querySelector('.box');
-        targetColumn.appendChild(taskCard);
-    }
-}
-
-// Generar la tarjeta de tarea en HTML
-function generateTaskCard(taskData) {
-    const taskCard = document.createElement('div');
-    taskCard.className = 'task';
-    taskCard.innerHTML = `
-        <div class="task-title">${taskData.title}</div>
-        <p class="task-assigned">Asignado a: ${taskData.assigned}</p>
-        <p class="task-priority">Prioridad: ${taskData.priority}</p>
-        <p class="task-due-date">Fecha límite: ${taskData.dueDate}</p>
-        <button class="deleteButton"></button>
-    `;
-
-    // Añadir evento de clic para editar la tarea
-    taskCard.addEventListener('click', function () {
-        editingTask = taskCard;
-        openTaskModalForEditing(taskCard, taskData);
-    });
-
-    return taskCard;
-}
 
 // Abrir modal para editar tarea
 function openTaskModalForEditing(taskCard, taskData) {
@@ -240,7 +185,9 @@ function changeMode() {
         document.documentElement.style.setProperty("--create-task-button", "#99e9f2");
         document.documentElement.style.setProperty("--create-task-hover", "#7bbcc4");
         mode = "Dark";
-    } else {
+    } 
+    else 
+    {
         document.documentElement.style.setProperty("--background-color", "#e8e8e8");
         document.documentElement.style.setProperty("--font-color", "black");
         document.documentElement.style.setProperty("--primary-color", "rgb(52, 52, 154)");
@@ -255,7 +202,6 @@ function changeMode() {
 darkMode.addEventListener('click', () => {
     changeMode();
 });
-
 
 // Inicializar el sistema
 renderTasks();
