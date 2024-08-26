@@ -10,13 +10,13 @@ let mode = "Light";
 
 // Abrir modal de nueva tarea
 addTaskBtn.addEventListener('click', () => {
-    editingTask = null;
+    editingTask = false;
     taskForm.reset();
     taskModal.classList.add('is-active');
 });
 
 addTaskDesktop.addEventListener('click', () => {
-    editingTask = null;
+    editingTask = false;
     taskForm.reset();
     taskModal.classList.add('is-active');
 });
@@ -38,22 +38,39 @@ saveTaskBtn.addEventListener('click', () => {
         status: document.getElementById('task-status').value,
         dueDate: document.getElementById('task-due-date').value
     };
-
     if (editingTask) {
         updateTask(editingTask, taskData);
     } else {
         createTask(taskData);
     }
-
     taskModal.classList.remove('is-active');
+});
+
+// Agregamos un event listener para el botón de modo oscuro
+document.getElementById("modo-oscuro").addEventListener("click", function () {
+    // Alterna entre las clases 'light-mode' y 'dark-mode' (por defecto sin la clase es modo oscuro)
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+        this.classList.add("light-mode");  // Cambia la imagen del botón para modo claro
+    } else {
+        this.classList.remove("light-mode");  // Cambia la imagen del botón para modo oscuro
+    }
 });
 
 
 // Crear nueva tarea
 function createTask(taskData) {
     const taskCard = generateTaskCard(taskData);
-    const targetColumn = document.querySelector(`.column.${taskData.status.toLowerCase().replace(' ', '-')}-column .task-list`);
-    targetColumn.appendChild(taskCard);
+
+    // Seleccionar la columna correcta según el estado de la tarea
+    const targetColumn = document.querySelector(`.column .box h2.subtitle`).closest('.columns-container').querySelectorAll('.box');
+    for (let box of targetColumn) {
+        if (box.querySelector('h2.subtitle').textContent === taskData.status) {
+            box.appendChild(taskCard);
+            break;
+        }
+    }
 }
 
 
@@ -67,7 +84,7 @@ function updateTask(taskCard, taskData) {
     // Mover la tarea a la columna correspondiente si se cambia el estado
     const currentColumn = taskCard.closest('.column').querySelector('.subtitle').textContent;
     if (currentColumn !== taskData.status) {
-        const targetColumn = document.querySelector(`.column .box:has(h2.subtitle:contains("${taskData.status}")) .task-list`);
+        const targetColumn = document.querySelector(`.column .box h2.subtitle:contains('${taskData.status}')`).closest('.column').querySelector('.box');
         targetColumn.appendChild(taskCard);
     }
 }
@@ -75,14 +92,16 @@ function updateTask(taskCard, taskData) {
 // Generar la tarjeta de tarea en HTML
 function generateTaskCard(taskData) {
     const taskCard = document.createElement('div');
-    taskCard.className = 'task-card';
+    taskCard.className = 'task';
     taskCard.innerHTML = `
-          <h3 class="task-title">${taskData.title}</h3>
-          <p class="task-assigned">Asignado a: ${taskData.assigned}</p>
-          <p class="task-priority">Prioridad: ${taskData.priority}</p>
-          <p class="task-due-date">Fecha límite: ${taskData.dueDate}</p>
-      `;
+        <div class="task-title">${taskData.title}</div>
+        <p class="task-assigned">Asignado a: ${taskData.assigned}</p>
+        <p class="task-priority">Prioridad: ${taskData.priority}</p>
+        <p class="task-due-date">Fecha límite: ${taskData.dueDate}</p>
+        <button class="deleteButton"></button>
+    `;
 
+    // Añadir evento de clic para editar la tarea
     taskCard.addEventListener('click', function () {
         editingTask = taskCard;
         openTaskModalForEditing(taskCard, taskData);
@@ -93,6 +112,7 @@ function generateTaskCard(taskData) {
 
 // Abrir modal para editar tarea
 function openTaskModalForEditing(taskCard, taskData) {
+    
     taskModal.classList.add('is-active');
     document.querySelector('.modal-card-title').textContent = 'Editar Tarea';
     document.getElementById('task-title').value = taskData.title;
@@ -103,9 +123,29 @@ function openTaskModalForEditing(taskCard, taskData) {
     document.getElementById('task-due-date').value = taskData.dueDate;
 }
 
+
+
+//Funcion Drag and Drop
+
+function drag(ev) {
+    ev.preventDefault();
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    let id = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(id));
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
 // Modo Oscuro
-function changeMode(btnOrigin){
-    if(mode === "Light"){
+function changeMode(btnOrigin) {
+    if (mode === "Light") {
 
         document.documentElement.style.setProperty("--background-color", "#121212");
         document.documentElement.style.setProperty("--font-color", "white");
@@ -116,9 +156,8 @@ function changeMode(btnOrigin){
         document.documentElement.style.setProperty("--create-task-", "#7bbcc4");
 
         mode = "Dark";
-        btnOrigin.textContent = "Modo Claro";
     }
-    else{
+    else {
 
         document.documentElement.style.setProperty("--background-color", "#e8e8e8");
         document.documentElement.style.setProperty("--font-color", "black");
@@ -128,8 +167,8 @@ function changeMode(btnOrigin){
         document.documentElement.style.setProperty("--create-task-button", "#99e9f2");
         document.documentElement.style.setProperty("--create-task-hover", "#7bbcc4");
 
+
         mode = "Light";
-        btnOrigin.textContent = "Modo Oscuro";
     }
 }
 
@@ -138,3 +177,4 @@ darkMode.addEventListener('click', () => {
 });
 
 changeMode(darkMode);
+
