@@ -72,6 +72,30 @@
     background-color: rgb(177, 188, 177);
 }
 
+#modo-oscuro {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: grey;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-image: url('luna.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#modo-oscuro.light-mode {
+    background-image: url('sol.png');
+
+}
+
+#modo-oscuro:hover {
+    background-color: rgb(177, 188, 177);
+}
+
 
 .section{
     min-width: 100%;
@@ -162,6 +186,24 @@ h1 {
     background-color: green;
     /* Color más oscuro al pasar el ratón */
 }
+#btn-desktop {
+    position: fixed; 
+    right: 20px; 
+    top: 20px; 
+    background-color: rgb(63, 167, 63);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#btn-desktop:hover {
+    background-color: green;
+}
+
 
 body.light-mode .subtitle{
     color: rgb(0, 0, 0);
@@ -170,6 +212,11 @@ body.light-mode .subtitle{
 
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
+}
+
+.drag-over {
+    border: 2px dashed #00d1b2;
+    background-color: #f0f0f0;
 }
 
 @media (max-width: 768px) {
@@ -196,7 +243,8 @@ body.light-mode .subtitle{
     }
 
     #btn-desktop:hover{
-        background-color: rgb(4, 83, 4);
+        display: block;
+        background-color: green;
     }
 
     .columns-container {
