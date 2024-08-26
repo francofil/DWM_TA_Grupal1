@@ -23,6 +23,31 @@ body {
     min-width: 100vw;
 }
 
+#modo-oscuro {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: grey;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-image: url('luna.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#modo-oscuro.light-mode {
+    background-image: url('sol.png');
+
+}
+
+#modo-oscuro:hover {
+    background-color: rgb(177, 188, 177);
+}
+
+
 .section{
     min-width: 100%;
     min-height: 100%;
@@ -53,7 +78,6 @@ h1 {
     /* Color más claro que el fondo */
     border: 2px solid var(--primary-color);
     /* Borde verde */
-    
     text-align: center;
     border-radius: 8px;
     display: flex;
@@ -83,8 +107,8 @@ h1 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: var(--create-task-button);
-    color: black;
+    background-color: rgb(63, 186, 63);
+    color: rgb(248, 244, 244);
     font-size: 30px;
     border: none;
     cursor: pointer;
@@ -94,32 +118,58 @@ h1 {
 }
 
 #add-task-btn:hover {
-    background-color: var(--create-task-hover);
+    background-color: green;
     /* Color más oscuro al pasar el ratón */
 }
+#btn-desktop {
+    position: fixed; 
+    right: 20px; 
+    top: 20px; 
+    background-color: rgb(63, 167, 63);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#btn-desktop:hover {
+    background-color: green;
+}
+
 
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
 
-#btn-desktop{
-    display: none;
+.drag-over {
+    border: 2px dashed #00d1b2;
+    background-color: #f0f0f0;
 }
+
+@media (max-width: 768px) {
+    #btn-desktop:hover{
+        display: none;
+    }
+    #btn-desktop{
+        display: none;
+    }
+}
+
 
 /* Estilo para pantallas medianas: wrap de columnas */
 @media (min-width: 768px) {
     #add-task-btn{
         display: none;
+        background-color: green;
     }
 
-    #btn-desktop{
-        display: block;
-        background-color: var(--create-task-button);
-    }
 
     #btn-desktop:hover{
         display: block;
-        background-color: var(--create-task-hover);
+        background-color: green;
     }
 
     .columns-container {
@@ -137,42 +187,62 @@ h1 {
 
 
 @media (min-width: 1440px) {
-    @media (min-width: 1440px) {
 
-        .container{
-            min-width: 90vw;
-            min-height: 100%;
-            margin: 5vw;
-        }
+    .container{
+        min-width: 90vw;
+        min-height: 100%;
+    }
 
-        .columns-container {
-            display: flex;
-            flex-wrap: nowrap; /* No permite que las columnas se muevan a la siguiente fila */
-            overflow-x: auto; /* Activa el scroll horizontal */
-            scroll-snap-type: x mandatory; /* Hace que el scroll "encaje" en las columnas */
-            width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
-            padding-bottom: 20px; /* Asegura que el contenido tenga espacio suficiente abajo */
-            margin: 0; /* Elimina márgenes que puedan causar desplazamiento */
-        }
-    
-        .column {
-            min-width: calc(100% / 3); /* Asegura que cada columna ocupe un tercio del ancho de la pantalla */
-            scroll-snap-align: end; /* Hace que las columnas "encajen" al hacer scroll */
-            margin: 0; /* Elimina márgenes que puedan afectar el scroll */
-            box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
-        }
-        
-        body{
-            min-height: 100vh;
-            background-color: var(--background-color);
-        }
-    
-        /* Asegúrate de que el contenedor ocupe todo el alto y tenga fondo */
-        .section {
-            background-color: var(--background-color);
-            padding: 0;
-            min-height: 100%;
-        }
+    .columns-container {
+        display: flex;
+        flex-wrap: nowrap; /* No permite que las columnas se muevan a la siguiente fila */
+        overflow-x: scroll; /* Activa el scroll horizontal */
+        scroll-snap-type: x mandatory; /* Hace que el scroll "encaje" en las columnas */
+        width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
+        padding-bottom: 20px; /* Asegura que el contenido tenga espacio suficiente abajo */
+        margin: 0; /* Elimina márgenes que puedan causar desplazamiento */
+        justify-content: flex-start; /* Justifica el contenido */
     }
     
+    .column {
+        min-width: calc(100% / 3); /* Asegura que cada columna ocupe un tercio del ancho de la pantalla */
+        scroll-snap-align: end; /* Hace que las columnas "encajen" al hacer scroll */
+        margin: 0; /* Elimina márgenes que puedan afectar el scroll */
+        box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
+    }
+        
+    body{
+        min-height: 100vh;
+        background-color: var(--background-color);
+    }
+    
+    /* Asegúrate de que el contenedor ocupe todo el alto y tenga fondo */
+    .section {
+        background-color: var(--background-color);
+        padding: 0;
+        min-height: 100%;
+    }
+    #save-task-btn{
+        background-color: rgb(86, 208, 86);
+        color:white;
+    }
+    #save-task-btn:hover{
+        background-color: green;
+    }
+
+     /* Estilo para los botones en el pie del modal */
+    .modal-card-foot .button {
+        margin-right: 40px; 
+    }
+
+    #save-task-btn {
+        background-color: rgb(86, 208, 86);
+        color: white;
+        margin-right: 400px; 
+    }
+
+    #save-task-btn:hover {
+        background-color: green;
+    }
+
 }
