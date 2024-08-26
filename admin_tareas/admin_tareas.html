@@ -6,7 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Tareas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Admin Tareas</h1>
-</body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Admin Tareas</h1>
+            <div class="columns">
+                <div class="column is-one-third">
+                    <div class="field">
+                        <label class="label">Tarea</label>
+                        <div class="control">
+                            <input class="input" type="text" id="tarea">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Fecha</label>
+                        <div class="control">
+                            <input class="input" type="date" id="fecha">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Hora</label>
+                        <div class="control">
+                            <input class="input" type="time" id="hora">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" id="agregar">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Tarea</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tareas">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <script src="app.js"></script>
+
+
