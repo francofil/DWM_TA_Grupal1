@@ -107,6 +107,19 @@ function generateTaskCard(taskData) {
         openTaskModalForEditing(taskCard, taskData);
     });
 
+    taskCard.querySelector('.deleteButton').addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevenir que se dispare el evento de editar tarea
+        taskCard.remove(); // Eliminar la tarjeta de tarea del DOM
+    });
+
+    taskCard.querySelector('.deleteButton').addEventListener('mouseenter', function(){
+        taskCard.querySelector('.deleteButton').style.backgroundColor = 'red';
+    });
+
+    taskCard.querySelector('.deleteButton').addEventListener('mouseout', function(){
+        taskCard.querySelector('.deleteButton').style.backgroundColor = 'gray';
+    });
+
     return taskCard;
 }
 
@@ -177,4 +190,3 @@ darkMode.addEventListener('click', () => {
 });
 
 changeMode(darkMode);
-
