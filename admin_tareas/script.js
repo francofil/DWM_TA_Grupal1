@@ -79,6 +79,7 @@ function generateTaskCard(taskData) {
         <p class="task-assigned">Asignado a: ${taskData.assigned}</p>
         <p class="task-priority">Prioridad: ${taskData.priority}</p>
         <p class="task-due-date">Fecha límite: ${taskData.dueDate}</p>
+        <button class="deleteButton"></button>
     `;
 
     // Evento dragstart para manejar el inicio del arrastre
@@ -98,6 +99,20 @@ function generateTaskCard(taskData) {
     taskCard.addEventListener('click', function () {
         editingTask = tasks.find(task => task.id === taskData.id);
         openTaskModalForEditing(taskCard, taskData);
+    });
+
+    taskCard.querySelector('.deleteButton').addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevenir que se dispare el evento de editar tarea
+        tasks = tasks.filter(task => task.id !== taskData.id); // Eliminar la tarea del arreglo 'tasks'
+        taskCard.remove(); // Eliminar la tarjeta de tarea del DOM
+    });
+
+    taskCard.querySelector('.deleteButton').addEventListener('mouseenter', function(){
+        taskCard.querySelector('.deleteButton').style.backgroundColor = 'red';
+    });
+
+    taskCard.querySelector('.deleteButton').addEventListener('mouseout', function(){
+        taskCard.querySelector('.deleteButton').style.backgroundColor = 'gray';
     });
 
     return taskCard;
