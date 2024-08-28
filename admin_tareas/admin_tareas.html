@@ -5,69 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Tareas</title>
+    <title>Gestor de Tareas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet">
     <script defer src="script.js"></script>
+    <link id="icono" rel="icon" href="white-task.png" type="image/x-icon">
 </head>
 
 <body>
-
-    <!-- Botón de Modo Oscuro/Modo Claro -->
-     <button type="button" id="modo-oscuro"></button>
-
     <section class="section">
         <div class="container">
-
-            <h1 class="title has-text-centered">
-                Gestor de Tareas
-            </h1>
-
-            <button id="btn-desktop" class="button is-rounded">
-                Agregar Tarea
-            </button>
+            <div id="barra">
+                <div id="logo-container">
+                    <img id="fotologo" src="task.png" alt="Logo">
+                    <div id="titulo">Gestor de Tareas</div>
+                </div>
+                <div id="buttonsContainer">
+                    <button id="btn-desktop" class="button is-rounded">
+                        Agregar Tarea
+                    </button>
+                    <button type="button" id="modo-oscuro"></button>
+                </div>
+            </div>
 
             <div class="columns-container">
                 <div class="column">
                     <div class="box">
                         <h2 class="subtitle">Backlog</h2>
-
-                        <div class="task">
-                            <div class="task-title">Tarea 1</div>
-                            <p class="task-description">Descripción de la tarea 1.</p>
-                        </div>
-                        <div class="task">
-                            <div class="task-title">Tarea 2</div>
-                            <p class="task-description">Descripción de la tarea 2.</p>
-                        </div>
-                        <div class="task">
-                            <div class="task-title">Tarea 3</div>
-                            <p class="task-description">Descripción de la tarea 3.</p>
-                        </div>
-
                     </div>
                 </div>
 
                 <div class="column">
-                    <div class="box">
+                    <div class="box" ondragover="allowdrop()" ondrop="drop()">
                         <h2 class="subtitle">To Do</h2>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="box">
+                    <div class="box" ondragover="allowdrop()" ondrop="drop()">
                         <h2 class="subtitle">In Progress</h2>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="box">
+                    <div class="box" ondragover="allowdrop()" ondrop="drop()">
                         <h2 class="subtitle">Blocked</h2>
                     </div>
                 </div>
                 <div class="column">
-                    <div class="box">
+                    <div class="box" ondragover="allowdrop()" ondrop="drop()">
                         <h2 class="subtitle">Done</h2>
                     </div>
                 </div>
