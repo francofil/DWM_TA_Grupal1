@@ -58,7 +58,6 @@ document.getElementById("modo-oscuro").addEventListener("click", function () {
     }
 });
 
-
 // Crear nueva tarea
 function createTask(taskData) {
     const taskCard = generateTaskCard(taskData);
@@ -73,7 +72,6 @@ function createTask(taskData) {
     }
 }
 
-
 // Editar tarea existente
 function updateTask(taskCard, taskData) {
     taskCard.querySelector('.task-title').textContent = taskData.title;
@@ -82,21 +80,21 @@ function updateTask(taskCard, taskData) {
     taskCard.querySelector('.task-due-date').textContent = `Fecha límite: ${taskData.dueDate}`;
 
     // Obtener todas las columnas
-const columns = document.querySelectorAll('.column');
+    const columns = document.querySelectorAll('.column');
 
-// Buscar la columna que contiene el subtítulo correspondiente al estado de la tarea
-let targetColumn = null;
-columns.forEach(column => {
-    const subtitle = column.querySelector('.subtitle');
-    if (subtitle && subtitle.textContent.trim() === taskData.status) {
-        targetColumn = column.querySelector('.box');
+    // Buscar la columna que contiene el subtítulo correspondiente al estado de la tarea
+    let targetColumn = null;
+    columns.forEach(column => {
+        const subtitle = column.querySelector('.subtitle');
+        if (subtitle && subtitle.textContent.trim() === taskData.status) {
+            targetColumn = column.querySelector('.box');
+        }
+    });
+
+    // Mover la tarjeta de la tarea a la columna encontrada
+    if (targetColumn) {
+        targetColumn.appendChild(taskCard);
     }
-});
-
-// Mover la tarjeta de la tarea a la columna encontrada
-if (targetColumn) {
-    targetColumn.appendChild(taskCard);
-}
 }
 
 // Generar la tarjeta de tarea en HTML
@@ -123,11 +121,11 @@ function generateTaskCard(taskData) {
         taskCard.remove(); // Eliminar la tarjeta de tarea del DOM
     });
 
-    taskCard.querySelector('.deleteButton').addEventListener('mouseenter', function(){
+    taskCard.querySelector('.deleteButton').addEventListener('mouseenter', function () {
         taskCard.querySelector('.deleteButton').style.backgroundColor = 'red';
     });
 
-    taskCard.querySelector('.deleteButton').addEventListener('mouseout', function(){
+    taskCard.querySelector('.deleteButton').addEventListener('mouseout', function () {
         taskCard.querySelector('.deleteButton').style.backgroundColor = 'gray';
     });
 
@@ -136,7 +134,7 @@ function generateTaskCard(taskData) {
 
 // Abrir modal para editar tarea
 function openTaskModalForEditing(taskCard, taskData) {
-    
+
     taskModal.classList.add('is-active');
     document.querySelector('.modal-card-title').textContent = 'Editar Tarea';
     document.getElementById('task-title').value = taskData.title;
@@ -147,10 +145,7 @@ function openTaskModalForEditing(taskCard, taskData) {
     document.getElementById('task-due-date').value = taskData.dueDate;
 }
 
-
-
 //Funcion Drag and Drop
-
 function drag(ev) {
     ev.preventDefault();
     ev.dataTransfer.setData("text", ev.target.id);
@@ -165,7 +160,6 @@ function drop(ev) {
 function allowDrop(ev) {
     ev.preventDefault();
 }
-
 
 // Modo Oscuro
 function changeMode(btnOrigin) {
@@ -191,7 +185,6 @@ function changeMode(btnOrigin) {
         document.documentElement.style.setProperty("--create-task-button", "#99e9f2");
         document.documentElement.style.setProperty("--create-task-hover", "#7bbcc4");
 
-
         mode = "Light";
     }
 }
@@ -201,4 +194,3 @@ darkMode.addEventListener('click', () => {
 });
 
 changeMode(darkMode);
-
