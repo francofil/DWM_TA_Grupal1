@@ -191,6 +191,14 @@ function openTaskModalForEditing(taskCard, taskData) {
 
 // Modo Oscuro
 function changeMode() {
+
+    document.body.classList.toggle("light-mode");
+    if (document.body.classList.contains("light-mode")) {
+        this.classList.add("light-mode");  // Cambia la imagen del botón para modo claro
+    } else {
+        this.classList.remove("light-mode");  // Cambia la imagen del botón para modo oscuro
+    }
+
     if (mode === "Light") {
         document.documentElement.style.setProperty("--background-color", "#121212");
         document.documentElement.style.setProperty("--font-color", "white");

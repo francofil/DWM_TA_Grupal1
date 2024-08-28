@@ -1,3 +1,29 @@
+/*Declaración de Variables*/
+:root{
+    --background-color: #121212;
+    --font-color: white;
+    --primary-color: rgb(52, 154, 52);
+    --light-background: #1e1e1e;
+    --very-light-background: #333333;
+    --create-task-button: #99e9f2;
+    --create-task-hover: #7bbcc4;
+}
+
+*{
+    color: var(--font-color);
+}
+
+body {
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+
 #barra {
     background-color: rgb(12, 64, 12);
     display: flex;
@@ -72,30 +98,6 @@
     background-color: rgb(177, 188, 177);
 }
 
-#modo-oscuro {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: grey;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background-image: url('luna.png');
-    background-size: cover;
-    background-position: center;
-}
-
-#modo-oscuro.light-mode {
-    background-image: url('sol.png');
-
-}
-
-#modo-oscuro:hover {
-    background-color: rgb(177, 188, 177);
-}
-
 
 .section{
     min-width: 100%;
@@ -135,7 +137,6 @@ h1 {
 
 .column {
     height: 100%; /* Asegura que cada columna ocupe el 100% de la altura del contenedor */
-    overflow-y: auto; /* Permite desplazamiento vertical si el contenido excede la altura */
     flex: 1; /* Hace que cada columna ocupe el mismo ancho */
 }
 
@@ -150,6 +151,7 @@ h1 {
     justify-content: flex-start; /* Alinear contenido hacia la parte superior */
     text-align: center;
     max-height: 500px;
+    overflow-y: auto;
 }
 
 
@@ -186,24 +188,6 @@ h1 {
     background-color: green;
     /* Color más oscuro al pasar el ratón */
 }
-#btn-desktop {
-    position: fixed; 
-    right: 20px; 
-    top: 20px; 
-    background-color: rgb(63, 167, 63);
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-#btn-desktop:hover {
-    background-color: green;
-}
-
 
 body.light-mode .subtitle{
     color: rgb(0, 0, 0);
@@ -212,11 +196,6 @@ body.light-mode .subtitle{
 
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
-}
-
-.drag-over {
-    border: 2px dashed #00d1b2;
-    background-color: #f0f0f0;
 }
 
 @media (max-width: 768px) {
@@ -243,8 +222,7 @@ body.light-mode .subtitle{
     }
 
     #btn-desktop:hover{
-        display: block;
-        background-color: green;
+        background-color: rgb(4, 83, 4);
     }
 
     .columns-container {
@@ -255,7 +233,6 @@ body.light-mode .subtitle{
 
     .column {
         flex: 1 0 calc(33.333% - 20px); /* Cada columna ocupa un tercio del ancho de la fila */
-    
         min-width: 300px; /* Evita que las columnas sean demasiado pequeñas */
     }
 }
@@ -331,4 +308,9 @@ body.light-mode .subtitle{
     position: relative;
     left: 300px;
     bottom: 50px;
+}
+
+.drag-over {
+    border: 2px dashed #00d1b2;
+    background-color: #f0f0f0;
 }
