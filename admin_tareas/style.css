@@ -10,6 +10,15 @@
     margin-top:  30px;
 }
 
+body.light-mode {
+    background-color: #ffffff;
+}
+
+body.light-mode .box {
+    background-color: rgba(204, 221, 197, 0.632);
+}
+
+
 #buttonsContainer{
     display: flex;
 }
@@ -94,6 +103,7 @@ h1 {
     color: white;
     margin-top: 0;
 }
+
 .container{
     display: flex;
     justify-content: center; /* Centra horizontalmente el contenido */
@@ -138,6 +148,7 @@ h1 {
     border-radius: 8px;
     width: 100%;
     margin-bottom: 20px;
+    position: relative;
 
 }
 
@@ -172,13 +183,18 @@ body.light-mode .subtitle{
     filter: invert(1);
 }
 
-@media (max-width: 768px) {
-    #btn-desktop:hover{
-        display: none;
-    }
-    #btn-desktop{
-        display: none;
-    }
+.modal-card-foot {
+    display: flex;
+    justify-content: space-between; /* Alinea todo a la derecha */
+}
+
+#cancel-task-btn {
+    margin-left: 0; /* Empuja el botón a la derecha */
+    margin-right: 0;
+}
+
+.task-title, .task-assigned, .task-priority, .task-due-date{
+    color: var(--font-color)
 }
 
 
@@ -245,7 +261,6 @@ body.light-mode .subtitle{
     
     /* Asegúrate de que el contenedor ocupe todo el alto y tenga fondo */
     .section {
-        background-color: var(--background-color);
         padding: 0;
         min-height: 100%;
     }
@@ -270,17 +285,87 @@ body.light-mode .subtitle{
     #save-task-btn:hover {
         background-color: green;
     }
+
+    .deleteButton{
+        width: 35px; 
+        height: 35px;
+        background-color: gray;
+        background-image: url('basurero.png');
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
 }
 
-.deleteButton{
-    width: 50px; 
-    height: 50px;
-    background-color: gray;
-    background-image: url('basurero.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    position: relative;
-    left: 300px;
-    bottom: 50px;
+@media (max-width: 1440px) {
+    @media (min-width: 768px) {
+        .deleteButton{
+            width: 35px; 
+            height: 35px;
+            background-color: gray;
+            background-image: url('basurero.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    }
+}
+
+
+/*Configuracion para las pantallas chicas*/
+@media (max-width: 768px) {
+    /* Para pantallas chicas: las columnas se alinean una debajo de la otra */
+    .columns-container {
+        flex-direction: column;
+        height: auto; /* Elimina la altura fija */
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .column {
+        width: auto ; /* Cada columna ocupará el 100% del ancho de la pantalla */
+        min-width: auto; /* Asegura que la columna se ajuste al ancho disponible */
+        margin-bottom: 20px; /* Añade un margen entre las columnas */
+    }
+    
+    #add-task-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: rgb(63, 186, 63);
+        color: rgb(248, 244, 244);
+        font-size: 30px;
+        border: none;
+        cursor: pointer;
+        /* Cambia el cursor al pasar sobre el botón */
+        outline: none;
+        text-align: center; /* No es estrictamente necesario con flexbox */
+    }
+    
+
+    #btn-desktop {
+        display: none; /* Oculta el botón de escritorio en celulares */
+    }
+
+    .deleteButton{
+        width: 35px; 
+        height: 35px;
+        background-color: gray;
+        background-image: url('basurero.png');
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        position: absolute;
+        bottom: 13px;
+        right: 10px;
+    }
 }

@@ -81,12 +81,22 @@ function updateTask(taskCard, taskData) {
     taskCard.querySelector('.task-priority').textContent = `Prioridad: ${taskData.priority}`;
     taskCard.querySelector('.task-due-date').textContent = `Fecha límite: ${taskData.dueDate}`;
 
-    // Mover la tarea a la columna correspondiente si se cambia el estado
-    const currentColumn = taskCard.closest('.column').querySelector('.subtitle').textContent;
-    if (currentColumn !== taskData.status) {
-        const targetColumn = document.querySelector(`.column .box h2.subtitle:contains('${taskData.status}')`).closest('.column').querySelector('.box');
-        targetColumn.appendChild(taskCard);
+    // Obtener todas las columnas
+const columns = document.querySelectorAll('.column');
+
+// Buscar la columna que contiene el subtítulo correspondiente al estado de la tarea
+let targetColumn = null;
+columns.forEach(column => {
+    const subtitle = column.querySelector('.subtitle');
+    if (subtitle && subtitle.textContent.trim() === taskData.status) {
+        targetColumn = column.querySelector('.box');
     }
+});
+
+// Mover la tarjeta de la tarea a la columna encontrada
+if (targetColumn) {
+    targetColumn.appendChild(taskCard);
+}
 }
 
 // Generar la tarjeta de tarea en HTML
@@ -190,3 +200,4 @@ darkMode.addEventListener('click', () => {
 });
 
 changeMode(darkMode);
+
