@@ -105,6 +105,7 @@ function generateTaskCard(taskData) {
     taskCard.className = 'task';
     taskCard.innerHTML = `
         <div class="task-title">${taskData.title}</div>
+        <p class="task-description">Descripción: ${taskData.description}</p>
         <p class="task-assigned">Asignado a: ${taskData.assigned}</p>
         <p class="task-priority">Prioridad: ${taskData.priority}</p>
         <p class="task-due-date">Fecha límite: ${taskData.dueDate}</p>
