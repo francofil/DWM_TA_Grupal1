@@ -175,6 +175,72 @@ saveTaskBtn.addEventListener('click', () => {
 });
 
 
+
+// Crear nueva tarea
+function createTask(taskData) {
+    const taskCard = generateTaskCard(taskData);
+
+    // Seleccionar la columna correcta según el estado de la tarea
+    const targetColumn = document.querySelector(`.column .box h2.subtitle`).closest('.columns-container').querySelectorAll('.box');
+    for (let box of targetColumn) {
+        if (box.querySelector('h2.subtitle').textContent === taskData.status) {
+            box.appendChild(taskCard);
+            break;
+        }
+    }
+}
+
+
+// Editar tarea existente
+function updateTask(taskCard, taskData) {
+    taskCard.querySelector('.task-title').textContent = taskData.title;
+    taskCard.querySelector('.task-assigned').textContent = `Asignado a: ${taskData.assigned}`;
+    taskCard.querySelector('.task-priority').textContent = `Prioridad: ${taskData.priority}`;
+    taskCard.querySelector('.task-due-date').textContent = `Fecha límite: ${taskData.dueDate}`;
+
+    // Mover la tarea a la columna correspondiente si se cambia el estado
+    const currentColumn = taskCard.closest('.column').querySelector('.subtitle').textContent;
+    if (currentColumn !== taskData.status) {
+        const targetColumn = document.querySelector(`.column .box h2.subtitle:contains('${taskData.status}')`).closest('.column').querySelector('.box');
+        targetColumn.appendChild(taskCard);
+    }
+}
+
+// Generar la tarjeta de tarea en HTML
+function generateTaskCard(taskData) {
+    const taskCard = document.createElement('div');
+    taskCard.className = 'task';
+    taskCard.innerHTML = `
+        <div class="task-title">${taskData.title}</div>
+        <p class="task-assigned">Asignado a: ${taskData.assigned}</p>
+        <p class="task-priority">Prioridad: ${taskData.priority}</p>
+        <p class="task-due-date">Fecha límite: ${taskData.dueDate}</p>
+        <button class="deleteButton"></button>
+    `;
+
+    // Añadir evento de clic para editar la tarea
+    taskCard.addEventListener('click', function () {
+        editingTask = taskCard;
+        openTaskModalForEditing(taskCard, taskData);
+    });
+
+    taskCard.querySelector('.deleteButton').addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevenir que se dispare el evento de editar tarea
+        taskCard.remove(); // Eliminar la tarjeta de tarea del DOM
+    });
+
+    taskCard.querySelector('.deleteButton').addEventListener('mouseenter', function(){
+        taskCard.querySelector('.deleteButton').style.backgroundColor = 'red';
+    });
+
+    taskCard.querySelector('.deleteButton').addEventListener('mouseout', function(){
+        taskCard.querySelector('.deleteButton').style.backgroundColor = 'gray';
+    });
+
+    return taskCard;
+}
+
+
 // Abrir modal para editar tarea
 function openTaskModalForEditing(taskCard, taskData) {
     
@@ -226,6 +292,8 @@ darkMode.addEventListener('click', () => {
     changeMode();
 });
 
+
+changeMode(darkMode);
 // Inicializar el sistema
 renderTasks();
 changeMode();
