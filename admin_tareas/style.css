@@ -201,7 +201,11 @@ body.light-mode .subtitle {
     margin-right: 0;
 }
 
-.task-title, .task-assigned, .task-priority, .task-due-date, .task-description{
+.task-title,
+.task-assigned,
+.task-priority,
+.task-due-date,
+.task-description {
     color: var(--font-color)
 }
 
@@ -396,4 +400,3 @@ body.light-mode .subtitle {
         right: 10px;
     }
 }
-
